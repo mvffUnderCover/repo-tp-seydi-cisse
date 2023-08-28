@@ -33,22 +33,10 @@ pipeline {
  echo "Sending message to agent"
  }
  success {
-         emailext(
-           subject: "Build Successful: ${CurrentBuild.fullDisplayName}",
-           body: "The build was successful. No further action is required. ",
-           recipientProviders: [culprits(), Developers()]
-           replyTo:"cmakhtar497@gmail.com",
-           to:"seydi3369@gmail.com"
-         )
+         echo "Sending message to agent"
   }
  failure {
-       emailext(
-                  subject: "Build Successful: ${CurrentBuild.fullDisplayName}",
-                             body: "The build was failed. No further action is required. ",
-                             recipientProviders: [culprits(), Developers()]
-                             replyTo:"cmakhtar497@gmail.com",
-                             to:"seydi3369@gmail.com"
-                )
+       echo "Sending message to agent"
  }
 
  }
