@@ -9,11 +9,22 @@ pipeline {
  git branch: 'main', url: 'https://github.com/mvffUnderCover/repo-tp-seydi-cisse.git'
  }
  }
- stage("Build") {
- steps {
- bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
+ stage("Parallel stage"){
+  Parallel{
+      stage("Maven version"){
+          steps{
+              bat "mvn --version"
+          }
+        }
+        stage("Build") {
+         steps {
+         bat 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install'
+         }
+         }
+  }
+
  }
- }
+
  stage("SonarQube Analysis") {
  steps {
  bat 'mvn sonar:sonar'
