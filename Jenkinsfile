@@ -10,7 +10,7 @@ pipeline {
  }
  }
  stage("Parallel stage"){
-  Parallel{
+  parallel{
       stage("Maven version"){
           steps{
               bat "mvn --version"
