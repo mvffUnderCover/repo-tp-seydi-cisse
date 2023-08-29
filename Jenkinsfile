@@ -44,11 +44,24 @@ pipeline {
  echo "Sending message to agent"
  }
  success {
-echo "Sending message to agent"
-  }
- failure {
-  echo "Sending message to agent"
- }
+       emailext(
+         subject: "Build Successful: ${currentBuild.fullDisplayName}",
+         body: "The build was successful. No further action is required.\n \n Build URL: $BUILD_URL",
+         recipientProviders: [culprits(), developers()],
+         replyTo: "cmakhtar497@gmail.com",
+         to: "seydi3369@gmail.com"
+       )
+     }
+     failure {
+       emailext(
+         subject: "Build Failed: ${currentBuild.fullDisplayName}",
+         body: "The build has failed. Please investigate and take necessary action. \n \n Build URL: $BUILD_URL",
+         recipientProviders: [culprits(), developers()],
+         replyTo: "cmakhtar497@gmail.com",
+         to: "seydi3369@gmail.com"
+       )
+     }
+
 
  }
 }
