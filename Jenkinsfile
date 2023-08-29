@@ -44,10 +44,18 @@ pipeline {
  echo "Sending message to agent"
  }
  success {
-         echo "Sending message to agent"
+         subject: "Build Successful: ${currentBuild.fullDisplayName",
+         body: "The build was successful. No further action is required",
+         recipientProviders: [culprits(), developers()],
+         replyTo: "cmakhtar497@gmail.com",
+         to: "seydi3369@gmail.com"
   }
  failure {
-       echo "Sending message to agent"
+       subject: "Build Successful: ${currentBuild.fullDisplayName",
+                body: "The build was failed. No further action is required",
+                recipientProviders: [culprits(), developers()],
+                replyTo: "cmakhtar497@gmail.com",
+                to: "seydi3369@gmail.com"
  }
 
  }
