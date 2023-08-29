@@ -43,19 +43,26 @@ pipeline {
  aborted {
  echo "Sending message to agent"
  }
- success {
-         subject: "Build Successful: ${currentBuild.fullDisplayName",
-         body: "The build was successful. No further action is required",
-         recipientProviders: [culprits(), developers()],
-         replyTo: "cmakhtar497@gmail.com",
-         to: "seydi3369@gmail.com"
-  }
+ success
+           {
+            emailest{
+                       subject: "Build Successful: ${currentBuild.fullDisplayName}",
+                       body: "The build was successful. No further action is required",
+                       recipientProviders: [culprits(), developers()],
+                       replyTo: "cmakhtar497@gmail.com",
+                       to: "seydi3369@gmail.com"
+                    }
+         }
+
+
  failure {
-       subject: "Build Successful: ${currentBuild.fullDisplayName",
+          emailext{
+                 subject: "Build Successful: ${currentBuild.fullDisplayName}",
                 body: "The build was failed. No further action is required",
                 recipientProviders: [culprits(), developers()],
                 replyTo: "cmakhtar497@gmail.com",
                 to: "seydi3369@gmail.com"
+                }
  }
 
  }
