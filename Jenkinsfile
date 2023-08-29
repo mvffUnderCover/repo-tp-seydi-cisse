@@ -1,8 +1,14 @@
 pipeline {
  agent any
+  parameters{
+     string(name: 'BRANCH', defaultValue: 'main', description:' anythings')
+   }
  tools {
  maven 'Maven'
  }
+ environment {
+     SONAR_URL = "http://localhost:9000"
+   }
  stages {
  stage("Source") {
  steps {
