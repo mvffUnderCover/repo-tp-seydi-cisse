@@ -45,7 +45,7 @@ pipeline {
  }
  success
            {
-            emailest{
+            emailext{
                        subject: "Build Successful: ${currentBuild.fullDisplayName}",
                        body: "The build was successful. No further action is required",
                        recipientProviders: [culprits(), developers()],
